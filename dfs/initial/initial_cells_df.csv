@@ -1,0 +1,41 @@
+cell,condition,response_type,time_on_rig
+H21012802,NL_Ch,ON sustained,173
+H21021901,NL_Ch,ON sustained,112
+H21021902,NL_Ch,ON sustained,137
+H21021903,NL_Ch,ON sustained,181
+H21031601,NL_Ch,ON sustained,78
+H21031606,NL_Ch,ON sustained,332
+H21032503,NL_Ch,ON sustained,116
+H21033101,NL_Ch,ON sustained,72
+H21033104,NL_Ch,ON sustained,184
+H21040803,NL_Ch,ON sustained,137
+H21040805,NL_Ch,ON sustained,199
+H21042101,NL_Ch,ON sustained,149
+H21042301,No Ch,ON sustained,84
+H21042303,No Ch,OFF transient,21
+H21042304,No Ch,OFF sustained,232
+H21050601,No Ch,OFF sustained,56
+H21050602,No Ch,OFF sustained,73
+H21050603,No Ch,ON sustained,128
+H21050701,No Ch,OFF sustained,36
+H21051201,No NL,OFF sustained,163
+H21051202,No NL,ON transient,61
+H21051302,No NL,ON sustained,27
+H21052104,No NL,ON sustained,145
+H21052502,No NL,ON sustained,91
+H21052601,No NL,ON sustained,60
+H21052701,No Ch,ON transient,32
+H21052705,No Ch,ON sustained,51
+H21052706,No Ch,OFF sustained,91
+H21052708,No Ch,ON sustained,116
+H21052709,No Ch,OFF sustained,142
+H21060901,NL_Ch,Non-alpha,53
+H21060902,NL_Ch,Non-alpha,82
+H21060903,NL_Ch,Non-alpha,113
+H21060904,NL_Ch,Non-alpha,135
+H21061001,NL_Ch,Non-alpha,45
+H21061002,NL_Ch,Non-alpha,92
+H21061003,NL_Ch,Non-alpha,174
+H21061004,NL_Ch,Non-alpha,190
+H21061005,NL_Ch,Non-alpha,213
+H21061006,NL_Ch,Non-alpha,232
