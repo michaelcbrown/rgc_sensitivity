@@ -30,17 +30,22 @@ def get_window_counts(df, window=0.1):
         result.post -= df.spike_time.between(post_min - window, post_min).sum()
     return result
 
+#folder = "dfs_HB"
+folder = "dfs_ESM"
+#folder = "dfs"
 
-spikes = pd.read_csv("dfs/spike_times.csv")
-files = pd.read_csv("dfs/files_df.csv")
-cells = pd.read_csv("dfs/initial/initial_cells_df.csv")
+spikes = pd.read_csv(folder + "/spike_times.csv")
+files = pd.read_csv(folder + "/files_df.csv")
+cells = pd.read_csv(folder + "/initial_cells_df.csv")
 files = files.merge(cells[['cell', 'response_type']], on='cell')
 
-sweeps = (spikes
-    .merge(files[['file_name', 'flash_onset', 'response_type']], on='file_name')
-    .groupby('file_name')
-    .apply(get_window_edges)
-    .groupby(['file_name', 'sweep'])
-    .apply(get_window_counts)
-    .reset_index()
-)
+if 1:
+    sweeps = (spikes
+        .merge(files[['file_name', 'flash_onset', 'response_type']], on='file_name')
+        .groupby('file_name')
+        .apply(get_window_edges)
+        .reset_index(drop=True)
+        .groupby(['file_name', 'sweep'])
+        .apply(get_window_counts)
+        .reset_index()
+    )

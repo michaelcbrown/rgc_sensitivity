@@ -17,7 +17,7 @@ def gaussian_convolution(spikes, sweep_length, sigma=500):
 
 def gauss_test(group):
     sweep_length = int(group.sweep_length.max())
-    flash_onset = group.flash_onset.max().round(5)
+    flash_onset = group.flash_onset.max().round(4)
     group.spike_time += (flash_onset - group.flash_onset)
 
     time, gauss = gaussian_convolution(group.spike_time, sweep_length)
@@ -50,10 +50,10 @@ def gauss_test_breakpoints(df, col='gauss_score'):
     return pd.Series({'gauss_high':high, 'gauss_mid':mid, 'gauss_low':low})
 
 def run_test():
-    files_df = pd.read_csv('dfs/files_df.csv')
-    cells_df = pd.read_csv('dfs/cells_df.csv')
-    spike_times = pd.read_csv('dfs/spike_times.csv')
-    intensities_df = pd.read_csv('dfs/intensities_df.csv')
+    files_df = pd.read_csv(folder + '/files_df.csv')
+    cells_df = pd.read_csv(folder + '/cells_df.csv')
+    spike_times = pd.read_csv(folder + '/spike_times.csv')
+    intensities_df = pd.read_csv(folder + '/intensities_df.csv')
 
     return (files_df
         .merge(cells_df[['cell', 'response_type']], on='cell')
@@ -65,11 +65,13 @@ def run_test():
     )
 
 def get_key_intensities(intensity_df):
-    cells_df = pd.read_csv('dfs/cells_df.csv')
+    cells_df = pd.read_csv(folder + '/cells_df.csv')
 
     return (cells_df
         .merge(intensity_df.groupby('cell').apply(gauss_test_breakpoints), on='cell')
     )
+
+folder = 'dfs_ESM'
 
 """
 Use run_test() and save as a new intensities_df.csv

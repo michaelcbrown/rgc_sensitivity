@@ -51,10 +51,10 @@ def AUC_breakpoints(df, col='AUC'):
         low = crossing = high = None
     return pd.Series({'AUC_high':high, 'AUC_crossing':crossing, 'AUC_low':low})
 
-
-cells = pd.read_csv('dfs/initial/initial_cells_df.csv')
-files = pd.read_csv('dfs/files_df.csv')
-sweeps = pd.read_csv('dfs/sweeps_df.csv')
+folder = "dfs_ESM"
+cells = pd.read_csv(folder + '/initial_cells_df.csv')
+files = pd.read_csv(folder + '/files_df.csv')
+sweeps = pd.read_csv(folder + '/sweeps_df.csv')
 sweeps = sweeps.merge(files[['file_name','cell','intensity']], on='file_name')
 
 
@@ -65,7 +65,7 @@ intensities = (files
     .assign(wilcoxon_p = sweeps.groupby(['cell', 'intensity']).apply(single_wilcoxon))
     .assign(AUC = sweeps.groupby(['cell', 'intensity']).apply(single_roc))
     .reset_index()
-    .pipe(lambda df: df[df.sweep_count>=5])
+    #.pipe(lambda df: df[df.sweep_count>=5])
     .sort_values(by=['cell', 'intensity'])
 )
 

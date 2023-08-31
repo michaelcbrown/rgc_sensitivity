@@ -1,15 +1,15 @@
 from inspect import stack
-from process_gauss import gaussian_convolution
+from .process_gauss import gaussian_convolution
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 def get_data():
-    files_df = pd.read_csv('dfs/files_df.csv')
-    cells_df = pd.read_csv('dfs/cells_df.csv')
-    intensities_df = pd.read_csv('dfs/intensities_df.csv')
-    spike_times = pd.read_csv('dfs/spike_times.csv')
+    files_df = pd.read_csv(folder + '/files_df.csv')
+    cells_df = pd.read_csv(folder + '/cells_df.csv')
+    intensities_df = pd.read_csv(folder + '/intensities_df.csv')
+    spike_times = pd.read_csv(folder + '/spike_times.csv')
 
     return (files_df
         .merge(cells_df[['cell', 'response_type', 'condition']], on='cell')
@@ -50,13 +50,15 @@ def stacked_plots(df, show=True):
     if show:
         plt.show()
 
+
+folder = 'dfs_ESM'
 df = get_data()
 
-if 0:
+if 1:
     for cell in df.cell.unique():
         stacked_plots(df[df.cell==cell], show=False)
-        plt.savefig(f'figures/stacked_convolutions/{cell}')
+        plt.savefig(f'figures2/stacked_convolutions/{cell}')
         plt.clf()
 
-if 1:
+if 0:
     stacked_plots(df[df.cell=='H21021901'])
